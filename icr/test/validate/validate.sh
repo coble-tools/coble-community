@@ -1,0 +1,1 @@
+echo "Testing the CI mechanism for the ICR repository"
