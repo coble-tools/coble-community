@@ -1,0 +1,265 @@
+Manager	Package	Version	ReleaseDate	Dependencies
+languages	python	3.11.0	2022-10-25	
+languages	r-base	3.6.2	2019-12-12	_r-mutex;bwidget;bzip2;cairo;clang_osx-64;clangxx_osx-64;curl;freetype;gcc_linux-64;gfortran_linux-64;gfortran_osx-64;glib;gsl;gxx_linux-64;icu;jpeg;krb5;libblas;libcurl;libcxx;libgcc-ng;libgfortran;libgfortran-ng;libiconv;liblapack;libpng;libssh2;libstdcxx-ng;libtiff;libuuid;libxml2;llvm-openmp;m2w64-bwidget;m2w64-bzip2;m2w64-fftw;m2w64-gcc-libs;m2w64-gmp;m2w64-gsl;m2w64-libiconv;m2w64-libjpeg-turbo;m2w64-libpng;m2w64-libsndfile;m2w64-libtiff;m2w64-libxml2;m2w64-mpfr;m2w64-pcre;m2w64-tk;m2w64-tktable;m2w64-xz;m2w64-zlib;make;msys2-conda-epoch;pango;pcre;readline;sed;tk;tktable;xz;zlib
+conda	binutils	2.36.1	2021-06-30	binutils_impl_linux-64;binutils_impl_linux-aarch64;binutils_impl_linux-ppc64le;binutils_impl_linux-s390x
+conda	binutils_impl_linux-64	2.36.1	2021-06-30	ld_impl_linux-64;sysroot_linux-64
+conda	binutils_linux-64	2.36	2021-07-02	binutils_impl_linux-64;sysroot_linux-64;sysroot_linux-aarch64;sysroot_linux-ppc64le;sysroot_linux-s390x
+conda	blis	0.7.0	2020-04-07	libgcc-ng;vc;vs2015_runtime
+conda	bwidget	1.10.1	2024-12-10	
+conda	bzip2	1.0.8	2019-07-15	libgcc-ng;vc;vs2015_runtime
+conda	c-compiler	1.1.2	2020-11-15	binutils;cctools;clang_osx-64;clang_osx-arm64;gcc_linux-64;gcc_linux-aarch64;gcc_linux-ppc64le;ld64;libgcc-ng;llvm-openmp;vc;vs2015_runtime;vs2017_win-64
+conda	ca-certificates	2026.1.4	2026-01-04	
+conda	cairo	1.16.0	2019-01-05	fontconfig;fonts-conda-ecosystem;freetype;glib;icu;libgcc-ng;libglib;libpng;libxcb;libzlib;pixman;vc;vs2015_runtime;xorg-libice;xorg-libsm;xorg-libx11;xorg-libxext;xorg-libxrender;zlib
+conda	curl	7.68.0	2020-02-05	krb5;libcurl;libgcc-ng;libssh2;vc;vs2015_runtime;zlib
+conda	cxx-compiler	1.1.2	2020-11-15	c-compiler;clangxx_osx-64;clangxx_osx-arm64;gxx_linux-64;gxx_linux-aarch64;gxx_linux-ppc64le;libcxx;libgcc-ng;libstdcxx-ng;vc;vs2015_runtime;vs2017_win-64
+conda	expat	2.7.4	2026-02-16	
+conda	fontconfig	2.14.2	2023-01-27	
+conda	freetype	2.12.1	2022-08-15	libgcc-ng;libpng;libzlib;vc;vs2015_runtime
+conda	fribidi	1.0.16	2025-09-09	
+conda	gcc_impl_linux-64	7.5.0	2020-05-14	binutils_impl_linux-64;libgcc-devel_linux-64;libgcc-ng;libgomp;libstdcxx-ng;sysroot_linux-64
+conda	gcc_linux-64	7.5.0	2020-05-14	binutils_linux-64;gcc_impl_linux-64;sysroot_linux-64
+conda	gfold	1.1.4	2015-11-04	gsl;libgcc;openblas
+conda	gfortran_impl_linux-64	7.5.0	2020-05-14	gcc_impl_linux-64;libgcc-ng;libgfortran-ng;libgfortran4;libstdcxx-ng;sysroot_linux-64
+conda	gfortran_linux-64	7.5.0	2020-05-14	binutils_linux-64;gcc_linux-64;gfortran_impl_linux-64;sysroot_linux-64
+conda	glib-tools	2.80.2	2024-05-09	
+conda	glib	2.80.2	2024-05-09	
+conda	graphite2	1.3.14	2025-06-16	
+conda	gsl	2.6	2019-09-03	libblas;libcblas;libgcc-ng;vc;vs2015_runtime
+conda	gxx_impl_linux-64	7.5.0	2020-05-14	gcc_impl_linux-64;libstdcxx-devel_linux-64;sysroot_linux-64
+conda	gxx_linux-64	7.5.0	2020-05-14	binutils_linux-64;gcc_linux-64;gxx_impl_linux-64;sysroot_linux-64
+conda	harfbuzz	2.4.0	2019-04-09	cairo;freetype;glib;graphite2;icu;libcxx;libgcc-ng;libstdcxx-ng;vc
+conda	icu	64.2	2019-07-17	libcxx;libgcc-ng;libstdcxx-ng;vc
+conda	jpeg	9e	2022-01-26	libgcc-ng;vc;vs2015_runtime
+conda	kernel-headers_linux-64	6.12.0	2025-11-16	
+conda	krb5	1.16.4	2019-12-12	libcxx;libedit;libgcc-ng;libstdcxx-ng;openssl;tk;vc
+conda	ld_impl_linux-64	2.36.1	2021-06-30	
+conda	lerc	4.0.0	2022-07-16	libcxx;libgcc-ng;libstdcxx-ng;vc;vs2015_runtime
+conda	libblas	3.8.0	2019-03-10	blis;libgcc-ng;libgfortran;libgfortran-ng;libgfortran4;libgfortran5;libopenblas;m2w64-gcc-libs;mkl;openblas
+conda	libcblas	3.8.0	2019-03-10	libblas;libgcc-ng;libgfortran;libgfortran-ng;libgfortran4;libgfortran5;m2w64-gcc-libs
+conda	libcurl	7.68.0	2020-02-05	krb5;libgcc-ng;libssh2;openssl;vc;vs2015_runtime;zlib
+conda	libdeflate	1.14	2022-09-11	
+conda	libedit	3.1.20250104	2025-02-02	
+conda	libexpat	2.7.4	2026-02-16	
+conda	libffi	3.5.2	2025-10-12	
+conda	libgcc-devel_linux-64	14.3.0	2025-05-28	
+conda	libgcc-ng	15.2.0	2025-10-05	
+conda	libgcc	15.2.0	2025-10-05	
+conda	libgfortran-ng	7.5.0	2020-05-14	libgfortran4
+conda	libgfortran4	7.5.0	2020-08-30	llvm-openmp
+conda	libgfortran5	15.2.0	2025-10-05	
+conda	libglib	2.80.2	2024-05-09	
+conda	libgomp	15.2.0	2025-10-05	
+conda	libiconv	1.18	2025-02-18	
+conda	liblapack	3.8.0	2019-03-10	libblas;libgcc-ng;libgfortran;libgfortran-ng;libgfortran4;libgfortran5;m2w64-gcc-libs
+conda	libnsl	2.0.1	2023-10-15	
+conda	libopenblas	0.3.28	2024-08-17	
+conda	libpng	1.6.43	2024-02-24	
+conda	libsanitizer	14.3.0	2025-05-28	
+conda	libsqlite	3.46.0	2024-06-10	
+conda	libssh2	1.10.0	2021-08-30	libgcc-ng;libzlib;openssl;vc;vs2015_runtime;zlib
+conda	libstdcxx-devel_linux-64	14.3.0	2025-05-28	
+conda	libstdcxx-ng	15.2.0	2025-10-05	
+conda	libstdcxx	15.2.0	2025-10-05	
+conda	libtiff	4.4.0	2022-05-30	jpeg;lerc;libcxx;libdeflate;libgcc-ng;libstdcxx-ng;libwebp-base;libzlib;vc;vs2015_runtime;xz;zstd
+conda	libuuid	2.41.3	2025-12-20	
+conda	libxcb	1.17.0	2024-09-25	
+conda	libxml2	2.9.10	2019-10-30	icu;libgcc-ng;libiconv;vc;vs2015_runtime;xz;zlib
+conda	libzlib	1.2.13	2022-10-14	
+conda	make	4.4.1	2024-08-23	
+conda	ncurses	6.5	2024-05-08	
+conda	openssl	1.1.1w	2023-09-11	
+conda	packaging	26.0	2026-01-22	
+conda	pango	1.42.4	2019-07-05	cairo;fontconfig;freetype;fribidi;glib;harfbuzz;libgcc-ng;libglib;libpng;vc;vs2015_runtime
+conda	pcre2	10.43	2024-02-16	
+conda	pcre	8.45	2021-06-15	libcxx;libgcc-ng;libstdcxx-ng;vc;vs2015_runtime
+conda	pip	26.0.1	2026-02-05	
+conda	pixman	0.38.0	2019-04-08	libgcc-ng;vc
+conda	pthread-stubs	0.4	2018-03-18	libgcc-ng;m2w64-gcc-libs
+conda	readline	8.3	2025-12-15	
+conda	sed	4.9	2025-05-06	
+conda	setuptools	82.0.0	2026-02-09	
+conda	sysroot_linux-64	2.39	2025-11-16	
+conda	tk	8.6.13	2023-09-23	
+conda	tktable	2.10	2019-07-15	libgcc-ng;tk
+conda	tzdata	2025c	2025-12-14	
+conda	wheel	0.46.3	2026-01-23	
+conda	xorg-libice	1.1.2	2024-12-15	
+conda	xorg-libsm	1.2.6	2025-03-13	
+conda	xorg-libx11	1.8.13	2026-02-11	
+conda	xorg-libxau	1.0.12	2024-12-15	
+conda	xorg-libxdmcp	1.1.5	2024-10-01	
+conda	xorg-libxext	1.3.7	2026-01-26	
+conda	xorg-libxrender	0.9.12	2024-12-15	
+conda	xz	5.2.6	2022-08-12	libgcc-ng;vc;vs2015_runtime
+conda	zlib	1.2.13	2022-10-14	
+conda	zstd	1.5.6	2024-05-03	
+r-conda	r-acepack	1.4.1	2017-04-08	libgcc-ng;libgfortran;libgfortran-ng;libgfortran4;libgfortran5;m2w64-gcc-libs;r-base
+r-conda	r-assertthat	0.2.1	2019-03-21	r-base
+r-conda	r-backports	1.2.1	2020-12-09	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-base64enc	0.1_3	2017-04-08	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-bh	1.75.0_0	2021-01-12	r-base
+r-conda	r-bibtex	0.4.2.3	2020-09-19	libgcc-ng;m2w64-gcc-libs;r-base;r-stringr
+r-conda	r-biocmanager	1.30.15	2021-05-11	r-base
+r-conda	r-bit64	4.0.5	2020-08-30	libgcc-ng;m2w64-gcc-libs;r-base;r-bit
+r-conda	r-bit	4.0.4	2020-08-04	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-bitops	1.0_7	2021-04-24	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-blob	1.2.1	2020-01-20	r-base;r-rlang;r-vctrs
+r-conda	r-blockmodeling	1.0.0	2020-07-01	libgcc-ng;libgfortran;libgfortran-ng;libgfortran4;libgfortran5;m2w64-gcc-libs;r-base;r-doparallel;r-dorng;r-foreach;r-matrix
+r-conda	r-brio	1.1.2	2021-04-23	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-bslib	0.2.5.1	2021-05-21	r-base;r-digest;r-htmltools;r-jquerylib;r-jsonlite;r-magrittr;r-rlang;r-sass
+r-conda	r-cachem	1.0.5	2021-05-17	libgcc-ng;m2w64-gcc-libs;r-base;r-fastmap;r-rlang
+r-conda	r-callr	3.7.0	2021-04-20	r-base;r-processx;r-r6
+r-conda	r-catools	1.18.2	2021-03-28	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-bitops
+r-conda	r-checkmate	2.0.0	2020-02-06	libgcc-ng;m2w64-gcc-libs;r-backports;r-base
+r-conda	r-cli	2.5.0	2021-04-26	r-assertthat;r-base;r-crayon;r-fansi;r-glue
+r-conda	r-cluster	2.1.2	2021-05-20	libgcc-ng;libgfortran;libgfortran-ng;libgfortran5;m2w64-gcc-libs;r-base
+r-conda	r-codetools	0.2_18	2020-11-11	r-base
+r-conda	r-colorspace	2.0_1	2021-05-04	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-commonmark	1.7	2019-01-04	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-crayon	1.4.1	2021-02-08	r-base
+r-conda	r-data.table	1.14.0	2021-02-21	libgcc-ng;llvm-openmp;m2w64-gcc-libs;r-base
+r-conda	r-dbi	1.1.1	2021-01-15	r-base
+r-conda	r-desc	1.3.0	2021-03-05	r-assertthat;r-base;r-crayon;r-r6;r-rprojroot
+r-conda	r-diffobj	0.3.4	2021-05-10	libgcc-ng;m2w64-gcc-libs;r-base;r-crayon
+r-conda	r-digest	0.6.27	2020-10-25	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-doparallel	1.0.16	2020-10-16	r-base;r-foreach;r-iterators
+r-conda	r-dorng	1.8.2	2020-01-27	r-base;r-foreach;r-iterators;r-rngtools
+r-conda	r-ellipsis	0.3.2	2021-04-29	libgcc-ng;m2w64-gcc-libs;r-base;r-rlang
+r-conda	r-evaluate	0.14	2019-05-28	r-base
+r-conda	r-fansi	0.4.2	2021-01-15	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-farver	2.1.0	2021-02-28	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-fastmap	1.1.0	2021-01-25	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-foreach	1.5.1	2020-10-15	r-base;r-codetools;r-iterators
+r-conda	r-foreign	0.8_76	2020-03-03	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-formatr	1.9	2021-04-14	r-base
+r-conda	r-formula	1.2_4	2020-10-16	r-base
+r-conda	r-fs	1.5.0	2020-07-31	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-futile.logger	1.4.3	2017-09-03	r-base;r-futile.options;r-lambda.r
+r-conda	r-futile.options	1.0.1	2018-09-16	r-base
+r-conda	r-ggplot2	3.3.3	2020-12-30	r-base;r-digest;r-glue;r-gtable;r-isoband;r-mass;r-mgcv;r-rlang;r-scales;r-tibble;r-withr
+r-conda	r-glue	1.4.2	2020-08-27	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-gplots	3.1.1	2020-11-28	r-base;r-catools;r-gtools;r-kernsmooth
+r-conda	r-gridextra	2.3	2018-01-07	r-base;r-gtable
+r-conda	r-gsa	1.03.1	2019-01-31	r-base
+r-conda	r-gtable	0.3.0	2019-03-25	r-base
+r-conda	r-gtools	3.8.2	2020-03-31	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-highr	0.9	2021-04-16	r-base;r-xfun
+r-conda	r-hmisc	4.5_0	2021-02-28	libgcc-ng;libgfortran;libgfortran-ng;libgfortran5;m2w64-gcc-libs;r-acepack;r-base;r-base64enc;r-cluster;r-data.table;r-foreign;r-formula;r-ggplot2;r-gridextra;r-gtable;r-htmltable;r-htmltools;r-lattice;r-latticeextra;r-nnet;r-rpart;r-survival;r-viridis
+r-conda	r-htmltable	2.2.1	2021-05-18	r-base;r-checkmate;r-htmltools;r-htmlwidgets;r-knitr;r-magrittr;r-rstudioapi;r-stringr
+r-conda	r-htmltools	0.5.1.1	2021-01-25	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-base64enc;r-digest;r-rlang
+r-conda	r-htmlwidgets	1.5.3	2020-12-10	r-base;r-htmltools;r-jsonlite;r-yaml
+r-conda	r-httpuv	1.6.1	2021-05-07	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-later;r-promises;r-r6;r-rcpp
+r-conda	r-isoband	0.2.4	2021-03-03	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-rcpp;r-testthat
+r-conda	r-iterators	1.0.13	2020-10-15	r-base
+r-conda	r-jquerylib	0.1.4	2021-04-26	r-base;r-htmltools
+r-conda	r-jsonlite	1.7.2	2020-12-09	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-kernsmooth	2.23_20	2021-05-20	libblas;libgcc-ng;libgfortran;libgfortran-ng;libgfortran5;m2w64-gcc-libs;r-base
+r-conda	r-knitr	1.33	2021-05-11	r-base;r-evaluate;r-highr;r-markdown;r-stringr;r-xfun;r-yaml
+r-conda	r-labeling	0.4.2	2020-10-20	r-base
+r-conda	r-lambda.r	1.2.4	2019-09-18	r-base;r-formatr
+r-conda	r-later	1.2.0	2021-04-23	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-rcpp;r-rlang
+r-conda	r-lattice	0.20_44	2021-05-02	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-latticeextra	0.6_29	2019-12-24	r-base;r-jpeg;r-lattice;r-png;r-rcolorbrewer
+r-conda	r-lifecycle	1.0.0	2021-02-15	r-base;r-glue;r-rlang
+r-conda	r-locfit	1.5_9.4	2020-03-25	libgcc-ng;m2w64-gcc-libs;r-base;r-lattice
+r-conda	r-magrittr	2.0.1	2020-11-17	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-markdown	1.1	2019-08-10	libgcc-ng;m2w64-gcc-libs;r-base;r-mime;r-xfun
+r-conda	r-mass	7.3_54	2021-05-03	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-matrix	1.3_3	2021-05-19	libblas;libgcc-ng;liblapack;m2w64-gcc-libs;r-base;r-lattice
+r-conda	r-matrixstats	0.58.0	2021-01-30	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-memoise	2.0.0	2021-01-26	r-base;r-cachem;r-rlang
+r-conda	r-mgcv	1.8_35	2021-05-20	libblas;libgcc-ng;liblapack;llvm-openmp;m2w64-gcc-libs;r-base;r-matrix;r-nlme
+r-conda	r-mime	0.10	2021-02-13	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-munsell	0.5.0	2018-06-12	r-base;r-colorspace
+r-conda	r-nlme	3.1_152	2021-02-04	libgcc-ng;libgfortran;libgfortran-ng;libgfortran5;m2w64-gcc-libs;r-base;r-lattice
+r-conda	r-nnet	7.3_16	2021-05-03	libgcc-ng;m2w64-gcc-libs;r-base;r-mass
+r-conda	r-openxlsx	4.2.3	2020-10-27	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-rcpp;r-rlang;r-stringi;r-zip
+r-conda	r-permute	0.9_5	2019-03-13	r-base
+r-conda	r-pillar	1.6.1	2021-05-16	r-base;r-cli;r-crayon;r-ellipsis;r-fansi;r-lifecycle;r-rlang;r-utf8;r-vctrs
+r-conda	r-pkgconfig	2.0.3	2019-09-22	r-base
+r-conda	r-pkgload	1.2.1	2021-04-07	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-cli;r-crayon;r-desc;r-rlang;r-rprojroot;r-rstudioapi;r-withr
+r-conda	r-pkgmaker	0.32.2	2020-10-21	r-assertthat;r-base;r-bibtex;r-codetools;r-digest;r-magrittr;r-registry;r-stringi;r-stringr;r-withr;r-xtable
+r-conda	r-plogr	0.2.0	2018-07-10	r-base
+r-conda	r-png	0.1_7	2017-04-24	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-poiclaclu	1.0.2.1	2021-06-02	r-base
+r-conda	r-praise	1.0.0	2017-04-24	r-base
+r-conda	r-processx	3.5.2	2021-04-30	libgcc-ng;m2w64-gcc-libs;r-base;r-ps;r-r6
+r-conda	r-promises	1.2.0.1	2021-02-11	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-later;r-magrittr;r-r6;r-rcpp;r-rlang
+r-conda	r-ps	1.6.0	2021-02-28	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-r.methodss3	1.8.1	2020-08-27	r-base
+r-conda	r-r.oo	1.24.0	2020-08-27	r-base;r-r.methodss3
+r-conda	r-r.utils	2.10.1	2020-08-27	r-base;r-r.methodss3;r-r.oo
+r-conda	r-r6	2.5.0	2020-10-28	r-base
+r-conda	r-rappdirs	0.3.3	2021-01-31	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-rcolorbrewer	1.1_2	2017-04-24	r-base
+r-conda	r-rcpp	1.0.6	2021-01-15	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-rcpparmadillo	0.10.4.0.0	2021-04-13	libblas;libcxx;libgcc-ng;liblapack;libstdcxx-ng;llvm-openmp;m2w64-gcc-libs;r-base;r-rcpp
+r-conda	r-rcurl	1.98_1.2	2020-04-18	libcurl;libgcc-ng;m2w64-curl;m2w64-gcc-libs;r-base;r-bitops
+r-conda	r-registry	0.5_1	2019-06-19	r-base
+r-conda	r-rematch2	2.1.2	2020-05-01	r-base;r-tibble
+r-conda	r-remotes	2.3.0	2021-04-01	r-base
+r-conda	r-rlang	0.4.11	2021-05-01	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-rngtools	1.5	2020-01-24	r-base;r-digest;r-pkgmaker;r-stringr
+r-conda	r-rpart	4.1_15	2019-04-15	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-rprojroot	2.0.2	2020-11-15	r-backports;r-base
+r-conda	r-rsqlite	2.2.5	2021-03-27	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-bit64;r-blob;r-dbi;r-memoise;r-pkgconfig;r-plogr;r-rcpp
+r-conda	r-rstudioapi	0.13	2020-11-13	r-base
+r-conda	r-samr	3.0	2019-05-02	bioconductor-impute;libgcc-ng;r-base;r-gsa;r-matrixstats;r-openxlsx;r-shiny;r-shinyfiles
+r-conda	r-sass	0.4.0	2021-05-12	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-digest;r-fs;r-htmltools;r-r6;r-rappdirs;r-rlang
+r-conda	r-scales	1.1.1	2020-05-13	r-base;r-farver;r-labeling;r-lifecycle;r-munsell;r-r6;r-rcolorbrewer;r-viridislite
+r-conda	r-shiny	1.6.0	2021-01-26	r-base;r-bslib;r-cachem;r-commonmark;r-crayon;r-digest;r-ellipsis;r-fastmap;r-glue;r-htmltools;r-httpuv;r-jsonlite;r-later;r-lifecycle;r-mime;r-promises;r-r6;r-rlang;r-sourcetools;r-withr;r-xtable
+r-conda	r-shinyfiles	0.9.0	2020-11-12	r-base;r-fs;r-htmltools;r-jsonlite;r-shiny;r-tibble
+r-conda	r-snow	0.4_3	2018-09-29	r-base
+r-conda	r-sourcetools	0.1.7	2018-09-05	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-stringi	1.4.6	2020-02-17	icu;libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;m2w64-icu;r-base
+r-conda	r-stringr	1.4.0	2019-02-19	r-base;r-glue;r-magrittr;r-stringi
+r-conda	r-survival	3.2_11	2021-04-26	libgcc-ng;m2w64-gcc-libs;r-base;r-matrix
+r-conda	r-testthat	3.0.2	2021-02-14	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base;r-brio;r-callr;r-cli;r-crayon;r-desc;r-digest;r-ellipsis;r-evaluate;r-jsonlite;r-lifecycle;r-magrittr;r-pkgload;r-praise;r-processx;r-ps;r-r6;r-rlang;r-waldo;r-withr
+r-conda	r-tibble	3.1.2	2021-05-16	libgcc-ng;m2w64-gcc-libs;r-base;r-ellipsis;r-fansi;r-lifecycle;r-magrittr;r-pillar;r-pkgconfig;r-rlang;r-vctrs
+r-conda	r-utf8	1.2.1	2021-03-13	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-vctrs	0.3.8	2021-04-29	libgcc-ng;m2w64-gcc-libs;r-backports;r-base;r-digest;r-ellipsis;r-glue;r-rlang;r-zeallot
+r-conda	r-viridis	0.6.1	2021-05-11	r-base;r-ggplot2;r-gridextra;r-viridislite
+r-conda	r-viridislite	0.4.0	2021-04-13	r-base
+r-conda	r-waldo	0.2.5	2021-03-08	r-base;r-cli;r-diffobj;r-fansi;r-glue;r-rematch2;r-rlang;r-tibble
+r-conda	r-withr	2.4.2	2021-04-18	r-base
+r-conda	r-xfun	0.23	2021-05-16	libcxx;libgcc-ng;libstdcxx-ng;m2w64-gcc-libs;r-base
+r-conda	r-xml	3.99_0.3	2020-01-20	libgcc-ng;libxml2;m2w64-gcc-libs;r-base
+r-conda	r-xtable	1.8_4	2019-05-12	r-base
+r-conda	r-yaml	2.2.1	2020-02-01	libgcc-ng;m2w64-gcc-libs;r-base
+r-conda	r-zip	2.1.1	2020-08-27	libgcc-ng;m2w64-gcc-libs;r-base
+bioc-conda	bioconductor-annotate	1.64.0	2019-11-03	bioconductor-annotationdbi;bioconductor-biobase;bioconductor-biocgenerics;r-base;r-dbi;r-rcurl;r-xml;r-xtable
+bioc-conda	bioconductor-annotationdbi	1.48.0	2019-11-02	bioconductor-biobase;bioconductor-biocgenerics;bioconductor-iranges;bioconductor-s4vectors;r-base;r-dbi;r-rsqlite
+bioc-conda	bioconductor-beachmat	2.2.0	2019-11-01	bioconductor-biocgenerics;bioconductor-delayedarray;libcxx;libgcc-ng;libstdcxx-ng;r-base;r-matrix
+bioc-conda	bioconductor-biocgenerics	0.32.0	2019-10-31	r-base
+bioc-conda	bioconductor-biocparallel	1.20.0	2019-11-01	libcxx;libgcc-ng;libstdcxx-ng;r-base;r-bh;r-futile.logger;r-snow
+bioc-conda	bioconductor-biostrings	2.54.0	2019-11-01	bioconductor-biocgenerics;bioconductor-iranges;bioconductor-s4vectors;bioconductor-xvector;libgcc-ng;r-base
+bioc-conda	bioconductor-bsgenome	1.54.0	2019-11-04	bioconductor-biocgenerics;bioconductor-biostrings;bioconductor-genomeinfodb;bioconductor-genomicranges;bioconductor-iranges;bioconductor-rsamtools;bioconductor-rtracklayer;bioconductor-s4vectors;bioconductor-xvector;r-base
+bioc-conda	bioconductor-bsseq	1.22.0	2019-11-02	bioconductor-beachmat;bioconductor-biobase;bioconductor-biocgenerics;bioconductor-biocparallel;bioconductor-biostrings;bioconductor-bsgenome;bioconductor-delayedarray;bioconductor-delayedmatrixstats;bioconductor-genomeinfodb;bioconductor-genomicranges;bioconductor-hdf5array;bioconductor-iranges;bioconductor-limma;bioconductor-rhdf5;bioconductor-s4vectors;bioconductor-summarizedexperiment;libcxx;libgcc-ng;libstdcxx-ng;r-base;r-data.table;r-gtools;r-locfit;r-permute;r-r.utils;r-rcpp;r-scales
+bioc-conda	bioconductor-delayedarray	0.12.0	2019-11-01	bioconductor-biocgenerics;bioconductor-biocparallel;bioconductor-iranges;bioconductor-s4vectors;libgcc-ng;r-base;r-matrix;r-matrixstats
+bioc-conda	bioconductor-delayedmatrixstats	1.8.0	2019-11-03	bioconductor-biocparallel;bioconductor-delayedarray;bioconductor-hdf5array;bioconductor-iranges;bioconductor-s4vectors;r-base;r-matrix;r-matrixstats
+bioc-conda	bioconductor-deseq2	1.26.0	2019-11-01	bioconductor-biobase;bioconductor-biocgenerics;bioconductor-biocparallel;bioconductor-genefilter;bioconductor-geneplotter;bioconductor-genomicranges;bioconductor-iranges;bioconductor-s4vectors;bioconductor-summarizedexperiment;libcxx;libgcc-ng;libstdcxx-ng;r-base;r-ggplot2;r-hmisc;r-locfit;r-rcpp;r-rcpparmadillo
+bioc-conda	bioconductor-deseq	1.38.0	2019-11-02	bioconductor-biobase;bioconductor-biocgenerics;bioconductor-genefilter;bioconductor-geneplotter;libgcc-ng;r-base;r-lattice;r-locfit;r-mass;r-rcolorbrewer
+bioc-conda	bioconductor-dss	2.34.0	2019-11-02	bioconductor-biobase;bioconductor-bsseq;bioconductor-delayedarray;libgcc-ng;r-base
+bioc-conda	bioconductor-ebseq	1.26.0	2019-11-01	r-base;r-blockmodeling;r-gplots;r-testthat
+bioc-conda	bioconductor-edger	3.28.0	2019-11-01	bioconductor-limma;libblas;libcxx;libgcc-ng;libgfortran;libgfortran-ng;liblapack;libstdcxx-ng;r-base;r-locfit;r-rcpp
+bioc-conda	bioconductor-genefilter	1.68.0	2019-11-02	bioconductor-annotate;bioconductor-annotationdbi;bioconductor-biobase;bioconductor-biocgenerics;libcxx;libgcc-ng;libgfortran;libgfortran-ng;libstdcxx-ng;r-base;r-survival
+bioc-conda	bioconductor-geneplotter	1.64.0	2019-11-03	bioconductor-annotate;bioconductor-annotationdbi;bioconductor-biobase;bioconductor-biocgenerics;r-base;r-lattice;r-rcolorbrewer
+bioc-conda	bioconductor-genomeinfodb	1.22.0	2019-11-01	bioconductor-biocgenerics;bioconductor-genomeinfodbdata;bioconductor-iranges;bioconductor-s4vectors;r-base;r-rcurl
+bioc-conda	bioconductor-genomeinfodbdata	1.2.2	2019-11-01	curl;r-base
+bioc-conda	bioconductor-genomicalignments	1.22.0	2019-11-02	bioconductor-biocgenerics;bioconductor-biocparallel;bioconductor-biostrings;bioconductor-genomeinfodb;bioconductor-genomicranges;bioconductor-iranges;bioconductor-rsamtools;bioconductor-s4vectors;bioconductor-summarizedexperiment;libgcc-ng;r-base
+bioc-conda	bioconductor-genomicranges	1.38.0	2019-11-01	bioconductor-biocgenerics;bioconductor-genomeinfodb;bioconductor-iranges;bioconductor-s4vectors;bioconductor-xvector;libgcc-ng;r-base
+bioc-conda	bioconductor-hdf5array	1.14.0	2019-11-01	bioconductor-biocgenerics;bioconductor-delayedarray;bioconductor-iranges;bioconductor-rhdf5;bioconductor-rhdf5lib;bioconductor-s4vectors;libgcc-ng;r-base;r-matrix
+bioc-conda	bioconductor-impute	1.60.0	2019-11-01	libgcc-ng;libgfortran;libgfortran-ng;r-base
+bioc-conda	bioconductor-iranges	2.20.0	2019-11-01	bioconductor-biocgenerics;bioconductor-s4vectors;libgcc-ng;r-base
+bioc-conda	bioconductor-limma	3.42.0	2019-11-01	libgcc-ng;r-base
+bioc-conda	bioconductor-parathyroidse	1.24.0	2019-11-06	bioconductor-summarizedexperiment;curl;r-base
+bioc-conda	bioconductor-pasilla	1.14.0	2019-11-06	curl;r-base
+bioc-conda	bioconductor-rhdf5	2.30.0	2019-11-01	bioconductor-rhdf5lib;libcxx;libgcc-ng;libstdcxx-ng;r-base
+bioc-conda	bioconductor-rhdf5lib	1.8.0	2019-11-01	libgcc-ng;r-base
+bioc-conda	bioconductor-rhtslib	1.18.0	2019-11-07	bioconductor-zlibbioc;bzip2;libcurl;libgcc-ng;r-base;xz
+bioc-conda	bioconductor-rsamtools	2.2.0	2019-11-01	bioconductor-biocgenerics;bioconductor-biocparallel;bioconductor-biostrings;bioconductor-genomeinfodb;bioconductor-genomicranges;bioconductor-iranges;bioconductor-rhtslib;bioconductor-s4vectors;bioconductor-xvector;bioconductor-zlibbioc;libcxx;libgcc-ng;libstdcxx-ng;r-base;r-bitops
+bioc-conda	bioconductor-rtracklayer	1.46.0	2019-11-02	bioconductor-biocgenerics;bioconductor-biostrings;bioconductor-genomeinfodb;bioconductor-genomicalignments;bioconductor-genomicranges;bioconductor-iranges;bioconductor-rsamtools;bioconductor-s4vectors;bioconductor-xvector;bioconductor-zlibbioc;libgcc-ng;r-base;r-rcurl;r-xml
+bioc-conda	bioconductor-s4vectors	0.24.0	2019-11-01	bioconductor-biocgenerics;libgcc-ng;r-base
+bioc-conda	bioconductor-summarizedexperiment	1.16.0	2019-11-02	bioconductor-biobase;bioconductor-biocgenerics;bioconductor-delayedarray;bioconductor-genomeinfodb;bioconductor-genomicranges;bioconductor-iranges;bioconductor-s4vectors;r-base;r-matrix
+bioc-conda	bioconductor-xvector	0.26.0	2019-11-01	bioconductor-biocgenerics;bioconductor-iranges;bioconductor-s4vectors;bioconductor-zlibbioc;libgcc-ng;r-base
+bioc-conda	bioconductor-zlibbioc	1.32.0	2019-11-01	libgcc-ng;r-base

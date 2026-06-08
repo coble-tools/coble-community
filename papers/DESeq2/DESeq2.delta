@@ -1,0 +1,71 @@
+if [ -f ~/.bash_profile ]; then source ~/.bash_profile; elif [ -f ~/.bashrc ]; then source ~/.bashrc; elif command -v conda > /dev/null 2>&1; then eval "$(conda shell.bash hook)"; fi
+
+conda env remove --name deseq206 -y 2>/dev/null || true
+
+conda create --no-default-packages --name deseq206 -y
+
+export PYTHONNOUSERSITE=1
+unset PYTHONPATH
+conda  clean --all -y --force-pkgs-dirs
+
+conda deactivate | true
+conda deactivate | true
+conda activate deseq206
+export PYTHONNOUSERSITE=1
+export | grep PYTHONNOUSERSITE
+conda config --env --show channels | grep -q 'channels:' && conda config --env --remove-key channels || true
+
+conda config --env --set channel_priority strict
+conda config --env --add channels bioconda
+
+conda config --env --add channels conda-forge
+
+conda install -y --solver=libmamba --no-update-deps -c conda-forge sysroot_linux-64 c-compiler cxx-compiler
+
+conda install -y --solver=libmamba --no-update-deps -c conda-forge 'gcc_linux-64=7.5' 'gxx_linux-64=7.5' 'gfortran_linux-64=7.5'
+
+ln -sf $CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc $CONDA_PREFIX/bin/gcc
+ln -sf $CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++ $CONDA_PREFIX/bin/g++
+ln -sf $CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gfortran $CONDA_PREFIX/bin/gfortran
+ln -sf /usr/bin/ld ${CONDA_PREFIX}/x86_64-conda-linux-gnu/bin/ld
+CONDA_BASE=$(conda info --base)
+
+ARCH=$(uname -m)
+
+conda install -y --solver=libmamba --no-update-deps 'r-base=3.6.2'
+
+conda install -y --solver=libmamba --no-update-deps r-remotes r-biocmanager r-renv
+
+conda install -y --solver=libmamba --no-update-deps \
+'bioconductor-DESeq2' \
+'bioconductor-DESeq' \
+'bioconductor-edgeR' \
+'bioconductor-DSS' \
+'bioconductor-limma' \
+'bioconductor-EBSeq' \
+'bioconductor-parathyroidSE' \
+'bioconductor-pasilla' 
+
+conda install -y --solver=libmamba --no-update-deps \
+GFOLD 
+
+conda install -y --solver=libmamba --no-update-deps \
+'r-samr' \
+'r-PoiClaClu' 
+
+echo "#!/usr/bin/env bash" > ${CONDA_PREFIX}/bin/validate.sh
+
+echo 'echo "COBLE validation: No script has been specified for deseq206 environment."' >> ${CONDA_PREFIX}/bin/validate.sh
+
+chmod +x ${CONDA_PREFIX}/bin/validate.sh
+
+chmod +x ${CONDA_PREFIX}/bin/validate.sh
+
+mkdir -p ${CONDA_PREFIX}/coble-recipe
+
+cp recipes/papers/DESeq2/DESeq2.cbl ${CONDA_PREFIX}/coble-recipe
+
+cp /home/ralcraft/DEV/gh-rse/BCRDS/coble/code/coble ${CONDA_PREFIX}/bin/
+
+cp /home/ralcraft/DEV/gh-rse/BCRDS/coble/code/coble-* ${CONDA_PREFIX}/bin/
+

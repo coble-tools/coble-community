@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #e9e9ee;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 100vh;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+
+        <div style="position:fixed;top:16px;left:16px;z-index:9999;
+                    background:#1a1a2e;border:1px solid #333;border-radius:8px;
+                    padding:12px 16px;color:#ddd;font-family:monospace;width:160px">
+          <div style="font-weight:bold;margin-bottom:8px;font-size:13px">Release date</div>
+          <svg width="130" height="14" style="display:block;border-radius:4px">
+            <defs><linearGradient id="g"><stop offset="0%" stop-color="#0c0786"/><stop offset="25%" stop-color="#7e03a7"/><stop offset="50%" stop-color="#cb4777"/><stop offset="75%" stop-color="#f89540"/><stop offset="100%" stop-color="#eff821"/></linearGradient></defs>
+            <rect width="130" height="14" fill="url(#g)" rx="3"/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:10px;margin-top:4px">
+            <span>2020-08</span><span>2026-01</span>
+          </div>
+          <div style="margin-top:6px;font-size:11px;color:#888">Grey = unknown date</div>
+        </div>
+    <div style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:9999;
+                background:#1a1a2e;border:1px solid #333;border-radius:8px;
+                padding:8px 20px;color:#fff;font-family:monospace;font-size:14px;
+                font-weight:bold;letter-spacing:0.5px">
+      COBLE package dependency graph<br>colour = date
+      &nbsp;&middot;&nbsp; 119 nodes &nbsp;&middot;&nbsp; 105 edges &nbsp;&middot;&nbsp; directed
+    </div>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "python", "label": "python", "shape": "dot", "size": 13, "title": "python\nManager: languages\nVersion: 3.9.25\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "aom", "label": "aom", "shape": "dot", "size": 13, "title": "aom\nManager: conda\nVersion: 3.12.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "blas", "label": "blas", "shape": "dot", "size": 13, "title": "blas\nManager: conda\nVersion: 1.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "brotlicffi", "label": "brotlicffi", "shape": "dot", "size": 13, "title": "brotlicffi\nManager: conda\nVersion: 1.0.9.2\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "bzip2", "label": "bzip2", "shape": "dot", "size": 16, "title": "bzip2\nManager: conda\nVersion: 1.0.8\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "ca-certificates", "label": "ca-certificates", "shape": "dot", "size": 13, "title": "ca-certificates\nManager: conda\nVersion: 2025.12.2\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "cairo", "label": "cairo", "shape": "dot", "size": 13, "title": "cairo\nManager: conda\nVersion: 1.18.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "certifi", "label": "certifi", "shape": "dot", "size": 13, "title": "certifi\nManager: conda\nVersion: 2025.10.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "cffi", "label": "cffi", "shape": "dot", "size": 13, "title": "cffi\nManager: conda\nVersion: 2.0.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "charset-normalizer", "label": "charset-normalizer", "shape": "dot", "size": 13, "title": "charset-normalizer\nManager: conda\nVersion: 3.4.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-cudart", "label": "cuda-cudart", "shape": "dot", "size": 10, "title": "cuda-cudart\nManager: conda\nVersion: 11.8.89\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-cupti", "label": "cuda-cupti", "shape": "dot", "size": 10, "title": "cuda-cupti\nManager: conda\nVersion: 11.8.87\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-libraries", "label": "cuda-libraries", "shape": "dot", "size": 10, "title": "cuda-libraries\nManager: conda\nVersion: 11.8.0\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-nvcc", "label": "cuda-nvcc", "shape": "dot", "size": 10, "title": "cuda-nvcc\nManager: conda\nVersion: 11.8.89\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-nvrtc", "label": "cuda-nvrtc", "shape": "dot", "size": 10, "title": "cuda-nvrtc\nManager: conda\nVersion: 11.8.89\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-nvtx", "label": "cuda-nvtx", "shape": "dot", "size": 10, "title": "cuda-nvtx\nManager: conda\nVersion: 11.8.86\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "cuda-runtime", "label": "cuda-runtime", "shape": "dot", "size": 10, "title": "cuda-runtime\nManager: conda\nVersion: 11.8.0\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#eff821", "font": {"color": "#110838"}, "id": "cuda-version", "label": "cuda-version", "shape": "dot", "size": 10, "title": "cuda-version\nManager: conda\nVersion: 13.1\nReleased: 2026-01-12\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "dav1d", "label": "dav1d", "shape": "dot", "size": 13, "title": "dav1d\nManager: conda\nVersion: 1.2.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "expat", "label": "expat", "shape": "dot", "size": 13, "title": "expat\nManager: conda\nVersion: 2.7.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#0c0786", "font": {"color": "#110838"}, "id": "ffmpeg", "label": "ffmpeg", "shape": "dot", "size": 49, "title": "ffmpeg\nManager: conda\nVersion: 4.3\nReleased: 2020-08-11\nConnections: 13"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "filelock", "label": "filelock", "shape": "dot", "size": 13, "title": "filelock\nManager: conda\nVersion: 3.17.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "fontconfig", "label": "fontconfig", "shape": "dot", "size": 13, "title": "fontconfig\nManager: conda\nVersion: 2.15.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "freetype", "label": "freetype", "shape": "dot", "size": 16, "title": "freetype\nManager: conda\nVersion: 2.14.1\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "fribidi", "label": "fribidi", "shape": "dot", "size": 13, "title": "fribidi\nManager: conda\nVersion: 1.0.16\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "gmp", "label": "gmp", "shape": "dot", "size": 16, "title": "gmp\nManager: conda\nVersion: 6.3.0\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "gmpy2", "label": "gmpy2", "shape": "dot", "size": 13, "title": "gmpy2\nManager: conda\nVersion: 2.2.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "gnutls", "label": "gnutls", "shape": "dot", "size": 16, "title": "gnutls\nManager: conda\nVersion: 3.6.15\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "graphite2", "label": "graphite2", "shape": "dot", "size": 13, "title": "graphite2\nManager: conda\nVersion: 1.3.14\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "harfbuzz", "label": "harfbuzz", "shape": "dot", "size": 13, "title": "harfbuzz\nManager: conda\nVersion: 10.2.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "icu", "label": "icu", "shape": "dot", "size": 13, "title": "icu\nManager: conda\nVersion: 73.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "idna", "label": "idna", "shape": "dot", "size": 13, "title": "idna\nManager: conda\nVersion: 3.11\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "intel-openmp", "label": "intel-openmp", "shape": "dot", "size": 13, "title": "intel-openmp\nManager: conda\nVersion: 2023.1.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "jinja2", "label": "jinja2", "shape": "dot", "size": 13, "title": "jinja2\nManager: conda\nVersion: 3.1.6\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "jpeg", "label": "jpeg", "shape": "dot", "size": 13, "title": "jpeg\nManager: conda\nVersion: 9f\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "lame", "label": "lame", "shape": "dot", "size": 16, "title": "lame\nManager: conda\nVersion: 3.100\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "lcms2", "label": "lcms2", "shape": "dot", "size": 13, "title": "lcms2\nManager: conda\nVersion: 2.17\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "ld_impl_linux-64", "label": "ld_impl_linux-64", "shape": "dot", "size": 13, "title": "ld_impl_linux-64\nManager: conda\nVersion: 2.44\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "lerc", "label": "lerc", "shape": "dot", "size": 13, "title": "lerc\nManager: conda\nVersion: 4.0.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libavif", "label": "libavif", "shape": "dot", "size": 13, "title": "libavif\nManager: conda\nVersion: 1.3.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libcublas", "label": "libcublas", "shape": "dot", "size": 10, "title": "libcublas\nManager: conda\nVersion: 11.11.3.6\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libcufft", "label": "libcufft", "shape": "dot", "size": 10, "title": "libcufft\nManager: conda\nVersion: 10.9.0.58\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#eff821", "font": {"color": "#110838"}, "id": "libcufile", "label": "libcufile", "shape": "dot", "size": 10, "title": "libcufile\nManager: conda\nVersion: 1.16.1.26\nReleased: 2026-01-12\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#eff821", "font": {"color": "#110838"}, "id": "libcurand", "label": "libcurand", "shape": "dot", "size": 10, "title": "libcurand\nManager: conda\nVersion: 10.4.1.81\nReleased: 2026-01-12\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libcusolver", "label": "libcusolver", "shape": "dot", "size": 10, "title": "libcusolver\nManager: conda\nVersion: 11.4.1.48\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libcusparse", "label": "libcusparse", "shape": "dot", "size": 10, "title": "libcusparse\nManager: conda\nVersion: 11.7.5.86\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libdeflate", "label": "libdeflate", "shape": "dot", "size": 13, "title": "libdeflate\nManager: conda\nVersion: 1.22\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libexpat", "label": "libexpat", "shape": "dot", "size": 13, "title": "libexpat\nManager: conda\nVersion: 2.7.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libffi", "label": "libffi", "shape": "dot", "size": 13, "title": "libffi\nManager: conda\nVersion: 3.4.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libgcc-ng", "label": "libgcc-ng", "shape": "dot", "size": 16, "title": "libgcc-ng\nManager: conda\nVersion: 15.2.0\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libgcc", "label": "libgcc", "shape": "dot", "size": 13, "title": "libgcc\nManager: conda\nVersion: 15.2.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libglib", "label": "libglib", "shape": "dot", "size": 13, "title": "libglib\nManager: conda\nVersion: 2.86.3\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libgomp", "label": "libgomp", "shape": "dot", "size": 13, "title": "libgomp\nManager: conda\nVersion: 15.2.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libiconv", "label": "libiconv", "shape": "dot", "size": 16, "title": "libiconv\nManager: conda\nVersion: 1.18\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libidn2", "label": "libidn2", "shape": "dot", "size": 13, "title": "libidn2\nManager: conda\nVersion: 2.3.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libnpp", "label": "libnpp", "shape": "dot", "size": 10, "title": "libnpp\nManager: conda\nVersion: 11.8.0.86\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libnsl", "label": "libnsl", "shape": "dot", "size": 13, "title": "libnsl\nManager: conda\nVersion: 2.0.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#ab2a8b", "font": {"color": "#110838"}, "id": "libnvjpeg", "label": "libnvjpeg", "shape": "dot", "size": 10, "title": "libnvjpeg\nManager: conda\nVersion: 11.9.0.86\nReleased: 2022-10-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libopenjpeg", "label": "libopenjpeg", "shape": "dot", "size": 13, "title": "libopenjpeg\nManager: conda\nVersion: 2.5.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libpng", "label": "libpng", "shape": "dot", "size": 13, "title": "libpng\nManager: conda\nVersion: 1.6.54\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libstdcxx-ng", "label": "libstdcxx-ng", "shape": "dot", "size": 16, "title": "libstdcxx-ng\nManager: conda\nVersion: 15.2.0\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libstdcxx", "label": "libstdcxx", "shape": "dot", "size": 13, "title": "libstdcxx\nManager: conda\nVersion: 15.2.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libtasn1", "label": "libtasn1", "shape": "dot", "size": 13, "title": "libtasn1\nManager: conda\nVersion: 4.21.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libtiff", "label": "libtiff", "shape": "dot", "size": 13, "title": "libtiff\nManager: conda\nVersion: 4.7.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libunistring", "label": "libunistring", "shape": "dot", "size": 13, "title": "libunistring\nManager: conda\nVersion: 0.9.10\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libuuid", "label": "libuuid", "shape": "dot", "size": 13, "title": "libuuid\nManager: conda\nVersion: 1.41.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libxcb", "label": "libxcb", "shape": "dot", "size": 13, "title": "libxcb\nManager: conda\nVersion: 1.17.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libxml2", "label": "libxml2", "shape": "dot", "size": 13, "title": "libxml2\nManager: conda\nVersion: 2.13.9\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "lz4-c", "label": "lz4-c", "shape": "dot", "size": 13, "title": "lz4-c\nManager: conda\nVersion: 1.9.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "markupsafe", "label": "markupsafe", "shape": "dot", "size": 13, "title": "markupsafe\nManager: conda\nVersion: 3.0.2\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mkl-service", "label": "mkl-service", "shape": "dot", "size": 13, "title": "mkl-service\nManager: conda\nVersion: 2.4.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mkl", "label": "mkl", "shape": "dot", "size": 13, "title": "mkl\nManager: conda\nVersion: 2023.1.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mkl_fft", "label": "mkl_fft", "shape": "dot", "size": 13, "title": "mkl_fft\nManager: conda\nVersion: 1.3.11\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mkl_random", "label": "mkl_random", "shape": "dot", "size": 13, "title": "mkl_random\nManager: conda\nVersion: 1.2.8\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mpc", "label": "mpc", "shape": "dot", "size": 13, "title": "mpc\nManager: conda\nVersion: 1.3.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mpfr", "label": "mpfr", "shape": "dot", "size": 13, "title": "mpfr\nManager: conda\nVersion: 4.2.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "mpmath", "label": "mpmath", "shape": "dot", "size": 13, "title": "mpmath\nManager: conda\nVersion: 1.3.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "ncurses", "label": "ncurses", "shape": "dot", "size": 13, "title": "ncurses\nManager: conda\nVersion: 6.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "nettle", "label": "nettle", "shape": "dot", "size": 13, "title": "nettle\nManager: conda\nVersion: 3.7.3\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "networkx", "label": "networkx", "shape": "dot", "size": 13, "title": "networkx\nManager: conda\nVersion: 3.2.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "openh264", "label": "openh264", "shape": "dot", "size": 16, "title": "openh264\nManager: conda\nVersion: 2.1.1\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "openjpeg", "label": "openjpeg", "shape": "dot", "size": 13, "title": "openjpeg\nManager: conda\nVersion: 2.5.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "openssl", "label": "openssl", "shape": "dot", "size": 13, "title": "openssl\nManager: conda\nVersion: 3.5.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pcre2", "label": "pcre2", "shape": "dot", "size": 13, "title": "pcre2\nManager: conda\nVersion: 10.46\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pillow", "label": "pillow", "shape": "dot", "size": 13, "title": "pillow\nManager: conda\nVersion: 11.3.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pip", "label": "pip", "shape": "dot", "size": 13, "title": "pip\nManager: conda\nVersion: 26.0.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pixman", "label": "pixman", "shape": "dot", "size": 13, "title": "pixman\nManager: conda\nVersion: 0.46.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pthread-stubs", "label": "pthread-stubs", "shape": "dot", "size": 13, "title": "pthread-stubs\nManager: conda\nVersion: 0.3\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pycparser", "label": "pycparser", "shape": "dot", "size": 13, "title": "pycparser\nManager: conda\nVersion: 2.23\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "pysocks", "label": "pysocks", "shape": "dot", "size": 13, "title": "pysocks\nManager: conda\nVersion: 1.7.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#b63584", "font": {"color": "#110838"}, "id": "pytorch-cuda", "label": "pytorch-cuda", "shape": "dot", "size": 10, "title": "pytorch-cuda\nManager: conda\nVersion: 11.8\nReleased: 2022-12-16\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#5e049e", "font": {"color": "#110838"}, "id": "pytorch-mutex", "label": "pytorch-mutex", "shape": "dot", "size": 10, "title": "pytorch-mutex\nManager: conda\nVersion: 1.0\nReleased: 2021-08-04\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#c3407c", "font": {"color": "#110838"}, "id": "pytorch", "label": "pytorch", "shape": "dot", "size": 10, "title": "pytorch\nManager: conda\nVersion: 2.0.0\nReleased: 2023-03-09\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "readline", "label": "readline", "shape": "dot", "size": 13, "title": "readline\nManager: conda\nVersion: 8.3\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "requests", "label": "requests", "shape": "dot", "size": 13, "title": "requests\nManager: conda\nVersion: 2.32.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "setuptools", "label": "setuptools", "shape": "dot", "size": 13, "title": "setuptools\nManager: conda\nVersion: 80.9.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "sqlite", "label": "sqlite", "shape": "dot", "size": 13, "title": "sqlite\nManager: conda\nVersion: 3.51.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "sympy", "label": "sympy", "shape": "dot", "size": 13, "title": "sympy\nManager: conda\nVersion: 1.14.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "tbb", "label": "tbb", "shape": "dot", "size": 13, "title": "tbb\nManager: conda\nVersion: 2021.8.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "tk", "label": "tk", "shape": "dot", "size": 13, "title": "tk\nManager: conda\nVersion: 8.6.15\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#c3407c", "font": {"color": "#110838"}, "id": "torchaudio", "label": "torchaudio", "shape": "dot", "size": 10, "title": "torchaudio\nManager: conda\nVersion: 2.0.0\nReleased: 2023-03-10\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#c23f7d", "font": {"color": "#110838"}, "id": "torchtriton", "label": "torchtriton", "shape": "dot", "size": 10, "title": "torchtriton\nManager: conda\nVersion: 2.0.0\nReleased: 2023-03-03\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#c3407c", "font": {"color": "#110838"}, "id": "torchvision", "label": "torchvision", "shape": "dot", "size": 10, "title": "torchvision\nManager: conda\nVersion: 0.15.0\nReleased: 2023-03-10\nConnections: 0"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "typing_extensions", "label": "typing_extensions", "shape": "dot", "size": 13, "title": "typing_extensions\nManager: conda\nVersion: 4.15.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "urllib3", "label": "urllib3", "shape": "dot", "size": 13, "title": "urllib3\nManager: conda\nVersion: 2.5.0\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "wheel", "label": "wheel", "shape": "dot", "size": 13, "title": "wheel\nManager: conda\nVersion: 0.45.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-libx11", "label": "xorg-libx11", "shape": "dot", "size": 13, "title": "xorg-libx11\nManager: conda\nVersion: 1.8.12\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-libxau", "label": "xorg-libxau", "shape": "dot", "size": 13, "title": "xorg-libxau\nManager: conda\nVersion: 1.0.12\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-libxdmcp", "label": "xorg-libxdmcp", "shape": "dot", "size": 13, "title": "xorg-libxdmcp\nManager: conda\nVersion: 1.1.5\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-libxext", "label": "xorg-libxext", "shape": "dot", "size": 13, "title": "xorg-libxext\nManager: conda\nVersion: 1.3.6\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-libxrender", "label": "xorg-libxrender", "shape": "dot", "size": 13, "title": "xorg-libxrender\nManager: conda\nVersion: 0.9.12\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xorg-xorgproto", "label": "xorg-xorgproto", "shape": "dot", "size": 13, "title": "xorg-xorgproto\nManager: conda\nVersion: 2024.1\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "xz", "label": "xz", "shape": "dot", "size": 13, "title": "xz\nManager: conda\nVersion: 5.6.4\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "zlib", "label": "zlib", "shape": "dot", "size": 16, "title": "zlib\nManager: conda\nVersion: 1.2.13\nReleased: unknown\nConnections: 2"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "zstd", "label": "zstd", "shape": "dot", "size": 13, "title": "zstd\nManager: conda\nVersion: 1.5.6\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "defaults", "label": "defaults", "shape": "dot", "size": 286, "title": "defaults\nManager: unknown\nVersion: ?\nReleased: unknown\nConnections: 92"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "libcxx", "label": "libcxx", "shape": "dot", "size": 13, "title": "libcxx\nManager: unknown\nVersion: ?\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "vc", "label": "vc", "shape": "dot", "size": 13, "title": "vc\nManager: unknown\nVersion: ?\nReleased: unknown\nConnections: 1"}, {"borderWidth": 1, "borderWidthSelected": 3, "color": "#6D6D7A", "font": {"color": "#110838"}, "id": "vs2015_runtime", "label": "vs2015_runtime", "shape": "dot", "size": 13, "title": "vs2015_runtime\nManager: unknown\nVersion: ?\nReleased: unknown\nConnections: 1"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "pthread-stubs", "to": "defaults"}, {"arrows": "to", "from": "pcre2", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "zlib"}, {"arrows": "to", "from": "libstdcxx", "to": "defaults"}, {"arrows": "to", "from": "xorg-libxau", "to": "defaults"}, {"arrows": "to", "from": "mpc", "to": "defaults"}, {"arrows": "to", "from": "nettle", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "lame"}, {"arrows": "to", "from": "libopenjpeg", "to": "defaults"}, {"arrows": "to", "from": "libunistring", "to": "defaults"}, {"arrows": "to", "from": "cairo", "to": "defaults"}, {"arrows": "to", "from": "lcms2", "to": "defaults"}, {"arrows": "to", "from": "jpeg", "to": "defaults"}, {"arrows": "to", "from": "mpfr", "to": "defaults"}, {"arrows": "to", "from": "wheel", "to": "defaults"}, {"arrows": "to", "from": "brotlicffi", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "bzip2"}, {"arrows": "to", "from": "pycparser", "to": "defaults"}, {"arrows": "to", "from": "mkl-service", "to": "defaults"}, {"arrows": "to", "from": "libstdcxx-ng", "to": "defaults"}, {"arrows": "to", "from": "openh264", "to": "defaults"}, {"arrows": "to", "from": "libavif", "to": "defaults"}, {"arrows": "to", "from": "networkx", "to": "defaults"}, {"arrows": "to", "from": "fribidi", "to": "defaults"}, {"arrows": "to", "from": "filelock", "to": "defaults"}, {"arrows": "to", "from": "libgomp", "to": "defaults"}, {"arrows": "to", "from": "libffi", "to": "defaults"}, {"arrows": "to", "from": "mkl_random", "to": "defaults"}, {"arrows": "to", "from": "lerc", "to": "defaults"}, {"arrows": "to", "from": "mpmath", "to": "defaults"}, {"arrows": "to", "from": "graphite2", "to": "defaults"}, {"arrows": "to", "from": "ca-certificates", "to": "defaults"}, {"arrows": "to", "from": "certifi", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "freetype"}, {"arrows": "to", "from": "pixman", "to": "defaults"}, {"arrows": "to", "from": "sympy", "to": "defaults"}, {"arrows": "to", "from": "harfbuzz", "to": "defaults"}, {"arrows": "to", "from": "libtiff", "to": "defaults"}, {"arrows": "to", "from": "zlib", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "libgcc-ng"}, {"arrows": "to", "from": "aom", "to": "defaults"}, {"arrows": "to", "from": "pillow", "to": "defaults"}, {"arrows": "to", "from": "charset-normalizer", "to": "defaults"}, {"arrows": "to", "from": "xorg-libxrender", "to": "defaults"}, {"arrows": "to", "from": "requests", "to": "defaults"}, {"arrows": "to", "from": "lame", "to": "defaults"}, {"arrows": "to", "from": "bzip2", "to": "defaults"}, {"arrows": "to", "from": "lz4-c", "to": "defaults"}, {"arrows": "to", "from": "libgcc-ng", "to": "defaults"}, {"arrows": "to", "from": "mkl", "to": "defaults"}, {"arrows": "to", "from": "xorg-libxdmcp", "to": "defaults"}, {"arrows": "to", "from": "libdeflate", "to": "defaults"}, {"arrows": "to", "from": "cffi", "to": "defaults"}, {"arrows": "to", "from": "readline", "to": "defaults"}, {"arrows": "to", "from": "libgcc", "to": "defaults"}, {"arrows": "to", "from": "tbb", "to": "defaults"}, {"arrows": "to", "from": "libidn2", "to": "defaults"}, {"arrows": "to", "from": "libglib", "to": "defaults"}, {"arrows": "to", "from": "fontconfig", "to": "defaults"}, {"arrows": "to", "from": "xz", "to": "defaults"}, {"arrows": "to", "from": "intel-openmp", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "libcxx"}, {"arrows": "to", "from": "ld_impl_linux-64", "to": "defaults"}, {"arrows": "to", "from": "xorg-libx11", "to": "defaults"}, {"arrows": "to", "from": "openjpeg", "to": "defaults"}, {"arrows": "to", "from": "expat", "to": "defaults"}, {"arrows": "to", "from": "urllib3", "to": "defaults"}, {"arrows": "to", "from": "tk", "to": "defaults"}, {"arrows": "to", "from": "ncurses", "to": "defaults"}, {"arrows": "to", "from": "gmp", "to": "defaults"}, {"arrows": "to", "from": "pysocks", "to": "defaults"}, {"arrows": "to", "from": "zstd", "to": "defaults"}, {"arrows": "to", "from": "python", "to": "defaults"}, {"arrows": "to", "from": "openssl", "to": "defaults"}, {"arrows": "to", "from": "sqlite", "to": "defaults"}, {"arrows": "to", "from": "pip", "to": "defaults"}, {"arrows": "to", "from": "libtasn1", "to": "defaults"}, {"arrows": "to", "from": "typing_extensions", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "vc"}, {"arrows": "to", "from": "gnutls", "to": "defaults"}, {"arrows": "to", "from": "mkl_fft", "to": "defaults"}, {"arrows": "to", "from": "jinja2", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "libstdcxx-ng"}, {"arrows": "to", "from": "libpng", "to": "defaults"}, {"arrows": "to", "from": "libxml2", "to": "defaults"}, {"arrows": "to", "from": "libiconv", "to": "defaults"}, {"arrows": "to", "from": "markupsafe", "to": "defaults"}, {"arrows": "to", "from": "dav1d", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "gmp"}, {"arrows": "to", "from": "blas", "to": "defaults"}, {"arrows": "to", "from": "freetype", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "gnutls"}, {"arrows": "to", "from": "libexpat", "to": "defaults"}, {"arrows": "to", "from": "gmpy2", "to": "defaults"}, {"arrows": "to", "from": "icu", "to": "defaults"}, {"arrows": "to", "from": "libxcb", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "openh264"}, {"arrows": "to", "from": "libuuid", "to": "defaults"}, {"arrows": "to", "from": "idna", "to": "defaults"}, {"arrows": "to", "from": "xorg-xorgproto", "to": "defaults"}, {"arrows": "to", "from": "libnsl", "to": "defaults"}, {"arrows": "to", "from": "xorg-libxext", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "libiconv"}, {"arrows": "to", "from": "setuptools", "to": "defaults"}, {"arrows": "to", "from": "ffmpeg", "to": "vs2015_runtime"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"forceAtlas2Based": {"gravitationalConstant": -60, "centralGravity": 0.005, "springLength": 120, "springConstant": 0.06, "damping": 0.45}, "solver": "forceAtlas2Based", "stabilization": {"iterations": 150}}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 0.6}}, "color": {"color": "#AAA2CE", "highlight": "#100744"}, "width": 0.8, "smooth": {"type": "dynamic"}}, "interaction": {"hover": true, "tooltipDelay": 100, "navigationButtons": true, "keyboard": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
